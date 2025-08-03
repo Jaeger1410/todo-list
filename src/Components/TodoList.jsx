@@ -40,33 +40,39 @@ const TodoList = () => {
         // Update the state with the new array (without the deleted todo)
         setTodos(newTodos);
     };
-    
+
     return (
         <>
         <div className="todo-container">
             <h1 className="title">My Todo List</h1>
             <div className="input-container">
-            <input
-                type="text"
-                className="heading-input" // CSS class for styling
-                placeholder="Enter heading" // Text shown when input is empty
-                value={headingInput}
-                onChange={(e) => {setHeadingInput(e.target.value);}} // Add onChange event handler to update headingInput state
+                <input
+                    type="text"
+                    className="heading-input" // CSS class for styling
+                    placeholder="Enter heading" // Text shown when input is empty
+                    value={headingInput}
+                    onChange={(e) => {setHeadingInput(e.target.value);}} // Add onChange event handler to update headingInput state
                 />
-            <button className="add-list-button" onClick={handleAddTodo}>Add Heading</button>
+                <button
+                    className="add-list-button"
+                    onClick={handleAddTodo}
+                >
+                    Add Heading
+                </button>
             </div>
         </div>
         <div className="todo_main">
                 {todos.map((todo, index) => (
                     <div key={index} className="todo-card">
                         <div className="heading-todo">
-                        <h3>{todo.heading}</h3>
-                        <button 
-                            className="delete-button-heading"
-                            onClick={() => handleDeleteTodo(index)}
-                        >
-                            Delete Heading
-                        </button>
+                            <h3>{todo.heading}</h3> {/* Display heading */}
+                            
+                            <button 
+                                className="delete-button-heading"
+                                onClick={() => handleDeleteTodo(index)}
+                            >
+                                Delete Heading
+                            </button>
                         </div>
                         <ul>
                             {todo.lists.map((list, listIndex) => (
